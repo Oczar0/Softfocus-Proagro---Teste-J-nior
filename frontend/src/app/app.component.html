@@ -1,0 +1,64 @@
+<title>
+  Proagro - Softfocus
+</title>
+<h1>Proagro - Softfocus</h1>
+<button (click)="addCommunication()" mat-raised-button color="primary">Criar comunicação de perda</button>
+<div class="mat-elevation-z8"> 
+
+
+<table mat-table [dataSource]="dataSource" class = "fullwidth">
+
+  <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="nome">
+    <th mat-header-cell *matHeaderCellDef> Nome </th>
+    <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+  </ng-container>
+  <!-- Position Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+  <!-- Position Column -->
+  <ng-container matColumnDef="cpf">
+    <th mat-header-cell *matHeaderCellDef> CPF </th>
+    <td mat-cell *matCellDef="let element"> {{element.cpf}} </td>
+  </ng-container>
+  <!-- Position Column -->
+  <ng-container matColumnDef="latitude">
+    <th mat-header-cell *matHeaderCellDef> Latitude </th>
+    <td mat-cell *matCellDef="let element"> {{element.latitude}} </td>
+  </ng-container>
+  <ng-container matColumnDef="longitude">
+    <th mat-header-cell *matHeaderCellDef> Longitude </th>
+    <td mat-cell *matCellDef="let element"> {{element.longitude}} </td>
+  </ng-container>
+  <ng-container matColumnDef="tipo_lavoura">
+    <th mat-header-cell *matHeaderCellDef> Tipo de Lavoura </th>
+    <td mat-cell *matCellDef="let element"> {{element.tipo_lavoura}} </td>
+  </ng-container>
+  <ng-container matColumnDef="data_colheita">
+    <th mat-header-cell *matHeaderCellDef> Data da Colheita</th>
+    <td mat-cell *matCellDef="let element"> {{element.data_colheita}} </td>
+  </ng-container>
+  <ng-container matColumnDef="evento_ocorrido">
+    <th mat-header-cell *matHeaderCellDef> Evento </th>
+    <td mat-cell *matCellDef="let element"> {{element.evento_ocorrido}} </td>
+  </ng-container>
+  <ng-container matColumnDef="acoes">
+    <th mat-header-cell *matHeaderCellDef> Ações </th>
+    <td mat-cell *matCellDef="let element">
+      <button (click)="deleteCommunication(element)" color="warn" mat-icon-button aria-label="Remover comunicação de perda">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button (click)="editCommunication(element)" color="primary" mat-icon-button aria-label="Editar comunicação de perda">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>

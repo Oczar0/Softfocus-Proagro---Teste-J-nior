@@ -1,0 +1,97 @@
+<form class="form" [formGroup]="lossCommunicationForm">
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Nome completo</mat-label>
+        <input matInput formControlName="nome">
+        <mat-error *ngIf="nome?.hasError('required')">
+            Nome é <strong>necessário</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Email:</mat-label>
+        <input matInput placeholder="Ex. usuario@mail.com.br" formControlName="email">
+        <mat-error *ngIf="email?.hasError('email') && !email?.hasError('required')">
+            Digite um email válido
+        </mat-error>
+        <mat-error *ngIf="email?.hasError('required')">
+            Email é <strong>necessário</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>CPF</mat-label>
+        <input 
+        matInput 
+        formControlName="cpf"
+        placeholder="Ex..000.000.000-00">
+        <mat-error *ngIf="cpf?.hasError('pattern') && !cpf?.hasError('required')">
+            Digite um CPF <strong>válido</strong>
+        </mat-error>
+        <mat-error *ngIf="cpf?.hasError('required')">
+            CPF é <strong>necessário</strong>
+        </mat-error>
+    </mat-form-field>
+    <table class="full-width" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Latitude</mat-label>
+                    <input matInput placeholder="Ex. -26.19811" formControlName="latitude">
+                    <mat-error *ngIf="latitude?.hasError('required')">
+                        Latitude é <strong>necessária</strong>
+                    </mat-error>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Longitude</mat-label>
+                    <input matInput placeholder="Ex. -52.69236" formControlName="longitude">
+                    <mat-error *ngIf="longitude?.hasError('required')">
+                        Longitude é <strong>necessária</strong>
+                    </mat-error>
+                </mat-form-field>
+            </td>
+        </tr>
+    </table>
+    <table class="full-width" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Tipo de lavoura</mat-label>
+                    <input matInput placeholder="Ex. milho" formControlName="tipo_lavoura">
+                    <mat-error *ngIf="tipo_lavoura?.hasError('required')">
+                        Tipo de lavoura é <strong>necessário</strong>
+                    </mat-error>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field appearance="fill">
+                    <mat-label>Evento Climático</mat-label>
+                    <select matNativeControl formControlName="evento_ocorrido">
+                        <mat-error *ngIf="evento_ocorrido?.hasError('required')">
+                            Evento ocorrido é <strong>necessário</strong>
+                        </mat-error>
+                        <option value="chuvaexcessiva">CHUVA EXCESSIVA</option>
+                        <option value="geada">GEADA</option>
+                        <option value="granizo">GRANIZO</option>
+                        <option value="seca">SECA</option>
+                        <option value="vendaval">VENDAVAL</option>
+                        <option value="raio">RAIO</option>
+                    </select>
+                </mat-form-field>
+            </td>
+        </tr>
+    </table>
+    <mat-form-field appearance="fill">
+        <mat-label>Data do evento</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="data_colheita">
+        <mat-error *ngIf="data_colheita?.hasError('required')">
+            Data é <strong>necessária</strong>
+        </mat-error>
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+</form>
+<div class="full-width save-button-container">  
+     <button mat-stroked-button *ngIf="!data?.id" (click)="addCommunication()" mat-raised-button color="primary">Criar</button>
+    <button *ngIf="data?.id" (click)="editCommunication()" mat-raised-button color="primary">Editar</button>
+</div>
