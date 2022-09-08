@@ -1,0 +1,3 @@
+INSERT INTO comunicacao_perda(
+nome, email, cpf, latitude, longitude, tipo_lavoura, data_colheita, evento_ocorrido)
+	VALUES ('Alberto Augusto Ricardo Junior', 'aarj@vma.com', '123.654.321-98', -22.2501124,-45.7054224, 'milho', '01/09/2022', 'CHUVA');

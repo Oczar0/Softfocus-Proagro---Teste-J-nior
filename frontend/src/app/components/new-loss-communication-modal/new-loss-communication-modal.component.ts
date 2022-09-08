@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LossCommunication } from 'src/app/app.component';
 import { LossCommunicationService } from 'src/app/services/loss-communication/loss-communication.service';
 
@@ -47,29 +47,30 @@ export class NewLossCommunicationModalComponent {
     return this.lossCommunicationForm.get('evento_ocorrido');
   }
   dataSource: LossCommunication[] = [];
-  constructor( @Inject(MAT_DIALOG_DATA) public data: LossCommunication, private lossCommunicationService: LossCommunicationService) {
-    console.log({ data });
-  }
+  
+ // constructor( @Inject(MAT_DIALOG_DATA) public data: LossCommunication, private lossCommunicationService: LossCommunicationService) {
+ //   console.log({ data });
+ // }
 
-  addCommunication() {
-    const formData = this.lossCommunicationForm.value as LossCommunication;
-    this.lossCommunicationService.createLossCommunication(formData)
-      .subscribe((data) => {
-        console.log(data);
-      })
-      this.lossCommunicationService.getAllLossCommunication()
-      .subscribe((data: LossCommunication[]) => {
-        this.dataSource = data;
-      })
-  }
+ constructor(public dialogRef: MatDialogRef<NewLossCommunicationModalComponent>, @Inject(MAT_DIALOG_DATA) public data: LossCommunication, private lossCommunicationService: LossCommunicationService) {
+  console.log({ data });
+}
+
+addCommunication() {
+  const formData = this.lossCommunicationForm.value as LossCommunication;
+  this.lossCommunicationService.createLossCommunication(formData)
+    .subscribe((data) => {
+       this.dialogRef.close();
+    });
+}
 
 
-  editCommunication() {
-    const formData = this.lossCommunicationForm.value as LossCommunication;
-    this.lossCommunicationService.editLossCommunication(this.data.id, formData)
-      .subscribe((data) => {
-        console.log(data);
-      })
-  }
+editCommunication() {
+  const formData = this.lossCommunicationForm.value as LossCommunication;
+  this.lossCommunicationService.editLossCommunication(this.data.id, formData)
+    .subscribe((data) => {
+      this.dialogRef.close();
+    })
+}
 
 }
