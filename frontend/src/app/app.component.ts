@@ -45,22 +45,35 @@ export class AppComponent implements OnInit {
   }
 
   addCommunication() {
-    this.dialog.open(NewLossCommunicationModalComponent);
-    console.log('Cadastrar comunicação de perda');
-    
-    this.dialog.closeAll();
-  }
+    const dialogRef = this.dialog.open(NewLossCommunicationModalComponent);
 
+    dialogRef.afterClosed().subscribe(result => {
+      this.lossCommunicationService.getAllLossCommunication()
+      .subscribe((data: LossCommunication[]) => {
+        this.dataSource = data;
+      })
+    });
+  }
   deleteCommunication(lossCommunication: LossCommunication) {
     this.lossCommunicationService.deleteLossCommunication(lossCommunication.id).subscribe((data) => {
-      console.log(data);
+       this.lossCommunicationService.getAllLossCommunication()
+      .subscribe((data: LossCommunication[]) => {
+        this.dataSource = data;
+      });
+    });
+  }
+  editCommunication(lossCommunication: LossCommunication) {
+    const dialogRef = this.dialog.open(NewLossCommunicationModalComponent, {
+      data: lossCommunication
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.lossCommunicationService.getAllLossCommunication()
+      .subscribe((data: LossCommunication[]) => {
+        this.dataSource = data;
+      })
     });
   }
 
-  editCommunication(lossCommunication: LossCommunication) {
-    this.dialog.open(NewLossCommunicationModalComponent, {
-      data: lossCommunication
-    });
-  }
 
   }
