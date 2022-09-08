@@ -9,7 +9,7 @@ Dentro da pasta Documentos:
 Proagro - Softfocus.postman_collection.json para testes no Postman.
 
 backe-end python:
-Psta api.
+Pasta api.
 Utilizado Fast-API.
 Usado para rodar projeto Visual studio code.
 Abrir projeto, uvicorn.
