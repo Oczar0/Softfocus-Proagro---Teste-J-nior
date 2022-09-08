@@ -48,10 +48,6 @@ export class NewLossCommunicationModalComponent {
   }
   dataSource: LossCommunication[] = [];
   
- // constructor( @Inject(MAT_DIALOG_DATA) public data: LossCommunication, private lossCommunicationService: LossCommunicationService) {
- //   console.log({ data });
- // }
-
  constructor(public dialogRef: MatDialogRef<NewLossCommunicationModalComponent>, @Inject(MAT_DIALOG_DATA) public data: LossCommunication, private lossCommunicationService: LossCommunicationService) {
   console.log({ data });
 }
