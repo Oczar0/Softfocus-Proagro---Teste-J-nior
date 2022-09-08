@@ -25,7 +25,7 @@ Passo a passo para a utilização da aplicação:
 
 Validações encontradas no front-end.
 1° validação CPF : Possui validação de CPF, onde só se pode fazer a alteração e criação da comunicação de perda com um valor de CPF válido.
-2° validação e-mail : Possui validação no e-mail, só é possivel a criação ou alteraão da comunicação de perda com um valor de e-mail valido, ex: ygorcdc@gmail.com.
+2° validação e-mail : Possui validação no e-mail, só é possivel a criação ou alteração da comunicação de perda com um valor de e-mail valido, ex: ygorcdc@gmail.com.
 3° validação de latitude e longitude : Possui validação de latitude e longitude.
 4° validação de campos em brancos : Possui validação de campo em branco em todos os inputs do formulário.
 
